@@ -27,8 +27,8 @@ def users():
         newUser.save()
         return (newUser.to_dict()), 201
 
-    userObj = [user.to_dict() for user in storage.all('State').values()]
-    return jsonify(userObj)
+    users = [user.to_dict() for user in storage.all('State').values()]
+    return jsonify(users)
 
 
 app_views.route('/city/<user_id>',
