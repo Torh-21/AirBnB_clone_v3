@@ -10,3 +10,5 @@ from api.v1.views.states import *
 from api.v1.views.cities import *
 from api.v1.views.amenities import *
 from api.vi.views.users import *
+from api.vi.views.places import *
+from api.vi.views.places_reviews import *
