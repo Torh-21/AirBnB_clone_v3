@@ -15,7 +15,7 @@ def users():
     if request.method == 'POST':
         response = request.get_json()
 
-        if response is None:
+        if not response:
             abort(400, description="Not a JSON")
 
         if 'email' not in response.keys():
@@ -39,7 +39,7 @@ app_views.route('/city/<user_id>',
 def user_id(user_id):
     """ Carries out HTTPs operations based on the user id """
 
-    user = storage.get(User, user_id)
+    user = storage.get("User", user_id)
     if not user:
         abort(404)
 
@@ -57,6 +57,6 @@ def user_id(user_id):
             if key.endswith('ated_at') or k == 'id':
                 continue
             setattr(user, key, value)
-        state.save()
+        user.save()
 
     return (jsonify(user.to_dict()))
